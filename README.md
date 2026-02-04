@@ -27,10 +27,11 @@ Application FastAPI dockerisée avec :
 ```
 
 ## Variables d’environnement
-Fichier `.env` :
+Le projet utilise un fichier `.env` (non versionné) basé sur le fichier `.env.example`.
 
+Fichier `.env.example`
 ```env
-DATABASE_URL=postgresql+psycopg2://app:app@db:5432/appdb
+DATABASE_URL=postgresql+psycopg2://USER:PASSWORD@DB_HOST:DB_PORT/DB_NAME
 ```
 
 ## Lancer l’application
