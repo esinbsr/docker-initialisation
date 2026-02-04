@@ -2,6 +2,9 @@
 # Image de base
 FROM python:3.11-slim
 
+# créer un utilisateur non-root pour la securité
+RUN useradd -m -u 1001 appuser \
+    && chown -R appuser:appuser /app
 
 # Configuration de l'environnement
 ENV APP_HOME=/app \
@@ -31,13 +34,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 
-# créer un utilisateur non-root pour la securité
-RUN useradd -m -u 1001 appuser \
-    && chown -R appuser:appuser /app
-
 # utiliser cet utilisateur
 USER appuser
-
 
 # informe docker qu'à l'intérieur du conteneur, mon application écoute sur le port 8000
 EXPOSE 8000
